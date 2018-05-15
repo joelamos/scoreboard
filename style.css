@@ -1,0 +1,12 @@
+.score {
+  text-align: center;
+  display: inline-block;
+  width: 49%;
+  font-size: 8em;
+}
+
+#reset {
+  margin: auto 0;
+  margin: 0 auto;
+  display: block;
+}
