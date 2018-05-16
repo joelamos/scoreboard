@@ -12,10 +12,29 @@
     cursor: pointer;
 }
 
+#settings {
+    text-align: center;
+    margin-top: 7em;
+}
+
+#settings div + div,
+#settings button + div,
+#settings div + button {
+    margin-left: .5em;
+}
+
 #reset {
-    margin: auto 0;
-    margin: 8em auto 0 auto;
-    display: block;
+    margin: 0 auto;
+}
+
+#game-to-21 {
+    text-align: center;
+    margin-top: 1em;
+    display: inline-block;
+}
+
+#game-to-21 > .toggle[disabled=disabled] .toggle-group label {
+    cursor: not-allowed;
 }
 
 .noselect {
@@ -25,4 +44,17 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* Bootstrap Toggle v2.2.2 corrections for Bootsrtap 4*/
+.toggle-off {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+.toggle.off {
+    border-color: rgba(0, 0, 0, .25);
+}
+
+.toggle-handle {
+    background-color: white;
+    border: thin rgba(0, 0, 0, .25) solid;
 }
