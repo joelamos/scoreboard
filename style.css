@@ -12,6 +12,17 @@
     cursor: pointer;
 }
 
+.serving {
+    text-align: center;
+    display: inline-block;
+    width: 49%;
+    font-size: 1.1em;
+}
+
+.invisible {
+    opacity: 0;
+}
+
 #settings {
     text-align: center;
     margin-top: 7em;
@@ -19,7 +30,8 @@
 
 #settings div + div,
 #settings button + div,
-#settings div + button {
+#settings div + button,
+#settings button + button {
     margin-left: .5em;
 }
 
