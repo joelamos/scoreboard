@@ -10,17 +10,27 @@
     <title>Jenzabar Scoreboard</title>
 </head>
 
-<body>
+<body class='noselect'>
     <img id='logo' src='https://pbs.twimg.com/profile_images/900378303126568961/8NCg4aL__400x400.jpg' />
-    <div class='score noselect'>0</div>
-    <div class='score noselect'>0</div>
-    <div class='serving'>Serving</div>
-    <div class='serving invisible'>Serving</div>
+    <div class='score-container'>
+        <div class='score noselect'>0</div>
+        <div class='serving noselect'>Serving</div>
+    </div>
+    <div class='score-container'>
+        <div class='score noselect'>0</div>
+        <div class='serving invisible noselect'>Serving</div>
+    </div>
     <div id='settings' class='noselect'>
+        <div class='decrement-container'>
+            <button type='button' class='decrement btn btn-sm btn-outline-secondary' onclick='this.blur();'>&minus;</button>
+        </div>
         <button id='reset' type='button' class='btn btn-danger' onclick='this.blur();'>Reset</button>
         <button id='switch-server' type='button' class='btn btn-info' onclick='this.blur();'>Switch server</button>
         <div id='game-to-21'>
             <input type='checkbox' checked data-toggle='toggle' data-on='To 21' data-off='To 11' data-onstyle='primary' data-offstyle='success'>
+        </div>
+        <div class='decrement-container'>
+            <button type='button' class='decrement btn btn-sm btn-outline-secondary' onclick='this.blur();'>&minus;</button>
         </div>
     </div>
 

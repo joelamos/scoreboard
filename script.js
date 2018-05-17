@@ -1,10 +1,8 @@
-function incrementScore(element) {
+function updateScore($score, increment) {
     if ($('.score.text-success').length == 0) {
-        var currentScore = parseInt(element.innerHTML);
-        element.innerHTML = ++currentScore;
-        if (currentScore >= 11) {
-            $('#game-to-21 input').bootstrapToggle('disable');
-        }
+        var currentScore = Math.max(0, parseInt($score.text()) + (increment ? 1 : -1));
+        $score.text(currentScore);
+        $('#game-to-21 input').bootstrapToggle(currentScore < 11 ? 'enable' : 'disable');
         var maxScore = $('#game-to-21 > .toggle.off').length == 1 ? 11 : 21;
         var totalScore = 0;
         $('.score').each(function () {
@@ -13,13 +11,12 @@ function incrementScore(element) {
         var otherScore = totalScore - currentScore;
         var deuceMode = totalScore >= maxScore * 2 - 1;
         if ((deuceMode && currentScore - otherScore > 1) || (!deuceMode && currentScore == maxScore)) {
-            $(element).addClass('text-success');
+            $score.addClass('text-success');
             return;
         }
-        if (deuceMode ||
-            ((maxScore == 21 && totalScore % 5 == 0) ||
-            (maxScore == 11 && totalScore % 2 == 0))) {
-                switchServer();
+        var serves = maxScore == 21 ? 5 : 2;
+        if (totalScore != 0 && (deuceMode || ((totalScore + (increment ? 0 : 1)) % serves == 0))) {
+            switchServer();
         }
     }
 }
@@ -34,8 +31,13 @@ function reset() {
 }
 
 $(function () {
-    $('.score').click(function () {
-        incrementScore(this);
+    $('.score-container').click(function () {
+        updateScore($(this).find('.score'), true);
+    });
+    $('.decrement').click(function () {
+        var firstDecrementButton = this == $('.decrement:first-child')[0];
+        var $score = $('.score').eq(firstDecrementButton ? 0 : 1);
+        updateScore($score, false);
     });
     $('#reset').click(function () {
         reset();

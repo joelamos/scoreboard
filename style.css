@@ -4,18 +4,23 @@
     display: block;
 }
 
-.score {
+.score-container {
+    position: relative;
     text-align: center;
     display: inline-block;
-    width: 49%;
-    font-size: 8em;
+    width: 49.7%;
     cursor: pointer;
 }
 
+.score-container + .score-container {
+    border-left: 1px solid #e0e0e0;
+}
+
+.score {
+    font-size: 8em;
+}
+
 .serving {
-    text-align: center;
-    display: inline-block;
-    width: 49%;
     font-size: 1.1em;
 }
 
@@ -26,13 +31,36 @@
 #settings {
     text-align: center;
     margin-top: 7em;
+    height: 38px;
 }
 
-#settings div + div,
-#settings button + div,
-#settings div + button,
-#settings button + button {
+#settings div:not(.decrement-container-container) + div:not(.decrement-container),
+#settings button:not(.decrement-container) + div:not(.decrement-container),
+#settings div:not(.decrement-container) + button:not(.decrement-container),
+#settings button:not(.decrement-container) + button:not(.decrement-container) {
     margin-left: .5em;
+}
+
+.decrement-container {
+    width: 49.7%;
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+}
+
+.decrement-container:first-child {
+    left: 0;
+}
+
+.decrement-container:last-child {
+    left: 49.7%;
+}
+
+.decrement {
+    /*position: absolute;*/
+    margin-top: 3.5px;
+    padding-left: .75em;
+    padding-right: .75em;
 }
 
 #reset {
@@ -41,7 +69,6 @@
 
 #game-to-21 {
     text-align: center;
-    margin-top: 1em;
     display: inline-block;
 }
 
