@@ -1,17 +1,18 @@
-function updateScore($score, increment) {
-    if ($('.score.text-success').length == 0) {
-        var currentScore = Math.max(0, parseInt($score.text()) + (increment ? 1 : -1));
-        $score.text(currentScore);
-        $('#game-to-21 input').bootstrapToggle(currentScore < 11 ? 'enable' : 'disable');
+function updateScore($scoreElement, increment) {
+    var score = parseInt($scoreElement.text());
+    if ($('.score.text-success').length == 0 && (increment || score > 0)) {
+        score += increment ? 1 : -1;
+        $scoreElement.text(score);
+        $('#game-to-21 input').bootstrapToggle(score < 11 ? 'enable' : 'disable');
         var maxScore = $('#game-to-21 > .toggle.off').length == 1 ? 11 : 21;
         var totalScore = 0;
         $('.score').each(function () {
             totalScore += parseInt(this.innerHTML);
         });
-        var otherScore = totalScore - currentScore;
+        var otherScore = totalScore - score;
         var deuceMode = totalScore >= maxScore * 2 - 1;
-        if ((deuceMode && currentScore - otherScore > 1) || (!deuceMode && currentScore == maxScore)) {
-            $score.addClass('text-success');
+        if ((deuceMode && score - otherScore > 1) || (!deuceMode && score == maxScore)) {
+            $scoreElement.addClass('text-success');
             return;
         }
         var serves = maxScore == 21 ? 5 : 2;
