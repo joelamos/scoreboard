@@ -46,6 +46,7 @@
     position: absolute;
     display: inline-block;
     text-align: center;
+    pointer-events: none;
 }
 
 .decrement-container:first-child {
@@ -57,10 +58,10 @@
 }
 
 .decrement {
-    /*position: absolute;*/
     margin-top: 3.5px;
     padding-left: .75em;
     padding-right: .75em;
+    pointer-events: auto;
 }
 
 #reset {
