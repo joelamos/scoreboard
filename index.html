@@ -5,7 +5,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script src='script.js'></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Jenzabar Scoreboard</title>
 </head>
@@ -33,7 +32,20 @@
             <button type='button' class='decrement btn btn-sm btn-outline-secondary' onclick='this.blur();'>&minus;</button>
         </div>
     </div>
-
+    
+    <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAZu0LUnxKvaXg0vjld7IfQqVSU7mLPbgE",
+        authDomain: "jenzabar-scoreboard.firebaseapp.com",
+        databaseURL: "https://jenzabar-scoreboard.firebaseio.com",
+        projectId: "jenzabar-scoreboard",
+        storageBucket: "jenzabar-scoreboard.appspot.com",
+        messagingSenderId: "615194212308"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src='script.js'></script>
 </body>
-
 </html>
