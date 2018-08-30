@@ -52,7 +52,7 @@
 
 #settings {
     text-align: center;
-    margin-top: 7em;
+    margin-top: 5em;
     height: 38px;
 }
 
@@ -97,6 +97,15 @@
 
 #game-to-21 > .toggle[disabled=disabled] .toggle-group label {
     cursor: not-allowed;
+}
+
+#persist-match {
+    text-align: center;
+    margin: 1em 0;
+}
+
+#persist-match label {
+    text-align: left;
 }
 
 .noselect {

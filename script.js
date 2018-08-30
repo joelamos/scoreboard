@@ -34,7 +34,7 @@ function reset() {
 }
 
 function recordGame() {
-    if ($('.player-dropdown')[0].value && $('.player-dropdown')[1].value) {
+    if ($('#persist-match-checkbox').is(':checked') && $('.player-dropdown')[0].value && $('.player-dropdown')[1].value) {
         db.collection('games').add({
             player1: db.doc('users/' + $('.player-dropdown').eq(0).val()),
             player1Score: parseInt($('.score').eq(0).text()),
@@ -70,5 +70,9 @@ $(function () {
     });
     $('#switch-server').click(function () {
         switchServer();
+    });
+    $('#persist-match-checkbox').change(function() {
+        $('#player-selection-panel').toggle(this.checked);
+        $('#settings').css('margin-top', this.checked ? '5em' : '7em');
     });
 });
