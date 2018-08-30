@@ -11,6 +11,15 @@
 
 <body class='noselect'>
     <img id='logo' src='https://pbs.twimg.com/profile_images/900378303126568961/8NCg4aL__400x400.jpg' />
+    <div id='player-selection-panel'> 
+        <div class='player-dropdown-container'>
+            <select class="player-dropdown form-control"></select>
+        </div>
+        <img id='vs' src='https://static.comicvine.com/uploads/original/11129/111299281/5464961-5451971954-52705.png' />
+        <div class='player-dropdown-container'>
+            <select class="player-dropdown form-control"></select>
+        </div>  
+    </div>
     <div class='score-container'>
         <div class='score noselect'>0</div>
         <div class='serving noselect'>Serving</div>
@@ -45,6 +54,8 @@
         messagingSenderId: "615194212308"
     };
     firebase.initializeApp(config);
+    var db = firebase.firestore();
+    db.settings({timestampsInSnapshots: true});
     </script>
     <script src='script.js'></script>
 </body>

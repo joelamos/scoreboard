@@ -4,6 +4,28 @@
     display: block;
 }
 
+#player-selection-panel {
+    margin-bottom: 4em;
+}
+
+.player-dropdown-container {
+    display: inline-block;
+    text-align: center;
+    width: 49.7%;
+}
+
+.player-dropdown {
+    margin-top: 10px;
+    width: 20em;
+    display: inline-block;
+}
+
+#vs {
+    width: 70px;
+    position: absolute;
+    left: calc(50% - 35px);
+}
+
 .score-container {
     position: relative;
     text-align: center;
