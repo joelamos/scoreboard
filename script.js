@@ -41,17 +41,20 @@ function recordGame() {
             player2: db.doc('users/' + $('.player-dropdown').eq(1).val()),
             player2Score: parseInt($('.score').eq(1).text()),
             time: new Date()
-        })
+        });
     }
 }
 
 function populatePlayerDropdowns() {
     var $dropdowns = $('.player-dropdown');
     $dropdowns.append('<option></option>');
-    db.collection('users').orderBy('displayName').get().then((snapshot) => {
-        snapshot.forEach((user) => {
-            $dropdowns.append('<option value="' + `${user.id}` + '">' + user.data().displayName + '</option>');
+    db.collection('users').orderBy('displayName').get()
+    .then(function (snapshot) { // on promise resolved
+        snapshot.forEach(function (user) {
+            $dropdowns.append('<option value="' + user.id + '">' + user.data().displayName + '</option>');
         });
+    }, function (error) { // on promise rejected
+        alert('Error while fetching players.\n\n' + error.stack);
     });
 }
 

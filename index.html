@@ -50,6 +50,10 @@
     
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
     <script>
+    // Alert on error
+    $(window).on('error', function(evt) {
+        alert(evt.originalEvent.message);
+    });
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAZu0LUnxKvaXg0vjld7IfQqVSU7mLPbgE",
