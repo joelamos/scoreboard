@@ -16,7 +16,7 @@
 
 .player-dropdown {
     margin-top: 10px;
-    width: 20em;
+    width: 15em;
     display: inline-block;
 }
 
@@ -99,12 +99,16 @@
     cursor: not-allowed;
 }
 
-#persist-match {
+#persistence-settings {
     text-align: center;
-    margin: 1em 0;
 }
 
-#persist-match label {
+.abc-checkbox {
+    display: inline-block;
+    margin: 1em .5em;
+}
+
+.abc-checkbox label {
     text-align: left;
 }
 
@@ -117,15 +121,25 @@
     user-select: none;
 }
 
-/* Bootstrap Toggle v2.2.2 corrections for Bootsrtap 4*/
+/* Bootstrap Toggle v2.2.2 corrections for Bootsrtap 4 */
 .toggle-off {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
 }
 .toggle.off {
     border-color: rgba(0, 0, 0, .25);
 }
-
 .toggle-handle {
     background-color: white;
     border: thin rgba(0, 0, 0, .25) solid;
+}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active,
+.btn-default.active, .open > .dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
 }

@@ -34,14 +34,30 @@ function reset() {
 }
 
 function recordGame() {
-    if ($('#persist-match-checkbox').is(':checked') && $('.player-dropdown')[0].value && $('.player-dropdown')[1].value) {
-        db.collection('games').add({
-            player1: db.doc('users/' + $('.player-dropdown').eq(0).val()),
-            player1Score: parseInt($('.score').eq(0).text()),
-            player2: db.doc('users/' + $('.player-dropdown').eq(1).val()),
-            player2Score: parseInt($('.score').eq(1).text()),
+    var persistMatch = $('#persist-match-checkbox').is(':checked');
+    var team1Player1 = $('#team1 .player-dropdown:first').val();
+    var team1Player2 = $('#team1 .player-dropdown:last').val();
+    var team2Player1 = $('#team2 .player-dropdown:first').val();
+    var team2Player2 = $('#team2 .player-dropdown:last').val();
+    var doublesChecked = $('#doubles-checkbox').is(':checked');
+    var singlesMatch = !doublesChecked && team1Player1 && team2Player1;
+    var doublesMatch = doublesChecked && team1Player1 && team2Player1 && team1Player2 && team2Player2;
+
+    if (persistMatch && (singlesMatch || doublesMatch)) {
+        var game = {
+            team1: [db.doc('users/' + team1Player1)],
+            team1Score: parseInt($('.score').eq(0).text()),
+            team2: [db.doc('users/' + team2Player1)],
+            team2Score: parseInt($('.score').eq(1).text()),
             time: new Date()
-        });
+        };
+
+        if (doublesMatch) {
+            game.team1.push(db.doc('users/' + team1Player2));
+            game.team2.push(db.doc('users/' + team2Player2));
+        }
+
+        db.collection('games').add(game);
     }
 }
 
@@ -75,7 +91,10 @@ $(function () {
         switchServer();
     });
     $('#persist-match-checkbox').change(function() {
-        $('#player-selection-panel').toggle(this.checked);
+        $('#player-selection-panel, #doubles').toggle(this.checked);
         $('#settings').css('margin-top', this.checked ? '5em' : '7em');
+    });
+    $('#doubles-checkbox').change(function () {
+        $('.player-dropdown:last-child').toggle(this.checked);
     });
 });

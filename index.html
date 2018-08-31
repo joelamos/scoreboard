@@ -14,12 +14,14 @@
 <body class='noselect'>
     <img id='logo' src='https://pbs.twimg.com/profile_images/900378303126568961/8NCg4aL__400x400.jpg' />
     <div id='player-selection-panel'> 
-        <div class='player-dropdown-container'>
-            <select class="player-dropdown form-control"></select>
+        <div id='team1' class='player-dropdown-container'>
+            <select class='player-dropdown form-control'></select>
+            <select class='player-dropdown form-control' style='display: none'></select>
         </div>
         <img id='vs' src='https://static.comicvine.com/uploads/original/11129/111299281/5464961-5451971954-52705.png' />
-        <div class='player-dropdown-container'>
-            <select class="player-dropdown form-control"></select>
+        <div id='team2' class='player-dropdown-container'>
+            <select class='player-dropdown form-control'></select>
+            <select class='player-dropdown form-control' style='display: none'></select>
         </div>
     </div>
     <div class='score-container'>
@@ -43,9 +45,15 @@
             <button type='button' class='decrement btn btn-sm btn-outline-secondary' onclick='this.blur();'>&minus;</button>
         </div>
     </div>
-    <div id='persist-match' class='abc-checkbox abc-checkbox-primary'>
-        <input type='checkbox' id='persist-match-checkbox' checked>
-        <label for='persist-match-checkbox'>Persist match to database</label>
+    <div id='persistence-settings'>
+        <div class='abc-checkbox abc-checkbox-primary'>
+            <input type='checkbox' id='persist-match-checkbox' checked>
+            <label for='persist-match-checkbox'>Ranked</label>
+        </div>
+        <div class='abc-checkbox abc-checkbox-primary'>
+            <input type='checkbox' id='doubles-checkbox'>
+            <label for='doubles-checkbox'>Doubles</label>
+        </div>
     </div>
     
     <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
