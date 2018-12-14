@@ -3,8 +3,8 @@ function updateScore($scoreElement, increment) {
     if ($('.score.text-success').length == 0 && (increment || score > 0)) {
         score += increment ? 1 : -1;
         $scoreElement.text(score);
-        $('#game-to-21 input').bootstrapToggle(score < 11 ? 'enable' : 'disable');
-        var maxScore = $('#game-to-21 > .toggle.off').length == 1 ? 11 : 21;
+        $('#game-to-21 input').bootstrapToggle(score < 16 ? 'enable' : 'disable');
+        var maxScore = $('#game-to-21 > .toggle.off').length == 1 ? 16 : 21;
         var totalScore = 0;
         $('.score').each(function () {
             totalScore += parseInt(this.innerHTML);
@@ -16,7 +16,7 @@ function updateScore($scoreElement, increment) {
             recordGame();
             return;
         }
-        var serves = maxScore == 21 ? 5 : 2;
+        var serves = maxScore == 11 ? 2 : 5;
         if (totalScore != 0 && (deuceMode || ((totalScore + (increment ? 0 : 1)) % serves == 0))) {
             switchServer();
         }
